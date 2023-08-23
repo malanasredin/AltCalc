@@ -21,6 +21,12 @@ public class Main {
         char operator = inputString.charAt(inputString.indexOf(sArray[1]) - 1);
 
         if (!operand1.startsWith("\"") || !operand1.endsWith("\"")) throw new Exception();
+<<<<<<< HEAD
+=======
+        if (removeKavichki(operand1).length() > 10 || removeKavichki(operand2).length() > 10) {
+            throw new IllegalArgumentException("Строки должны быть длиной не более 10 символов");
+        }
+>>>>>>> 80c7192 (Initial commit)
         String result;
 
         switch (operator) {
@@ -52,7 +58,15 @@ public class Main {
 
     private static int parseNumber(String operand) {
         try {
+<<<<<<< HEAD
             return Integer.parseInt(operand);
+=======
+            int num = Integer.parseInt(operand);
+            if(num < 1 || num > 10) {
+                throw new IllegalArgumentException("Число должно быть в диапазоне от 1 до 10: " + operand);
+            }
+            return num;
+>>>>>>> 80c7192 (Initial commit)
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Некорректное число: " + operand);
         }
@@ -78,10 +92,17 @@ public class Main {
             throw new IllegalArgumentException("Делитель должен быть положительным числом");
         }
 
+<<<<<<< HEAD
         int length = str.length();
         int newLength = length / factor;
 
         return str.substring(0, newLength) + "\"";
+=======
+        String content = removeKavichki(str);
+        int newLength = content.length() / factor;
+
+        return "\"" + content.substring(0, newLength) + "\"";
+>>>>>>> 80c7192 (Initial commit)
     }
 
     private static String removeKavichki(String input){
